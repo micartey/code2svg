@@ -57,5 +57,20 @@
           ];
         };
       }
-    );
+    )
+    // {
+      nixosModules.code-svg =
+        {
+          config,
+          lib,
+          pkgs,
+          ...
+        }:
+        {
+          imports = [ ./nixos/module.nix ];
+          services.code-svg.package = lib.mkDefault self.packages.${pkgs.system}.code-svg;
+        };
+
+      nixosModules.default = self.nixosModules.code-svg;
+    };
 }

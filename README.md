@@ -22,6 +22,38 @@ cd code-svg
 just run
 ```
 
+#### Nix & NixOS
+
+If you are using Nix, you can run the server directly:
+
+```bash
+nix run github:micartey/code-svg
+```
+
+To host it on a NixOS server, add the flake to your inputs and import the module:
+
+```nix
+{
+  inputs.code-svg.url = "github:micartey/code-svg";
+
+  outputs = { self, nixpkgs, code-svg }: {
+    nixosConfigurations.my-server = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        code-svg.nixosModules.default
+        {
+          services.code-svg = {
+            enable = true;
+            port = 8080;
+            openFirewall = true;
+          };
+        }
+      ];
+    };
+  };
+}
+```
+
 ### Build from source
 
 If you prefer to build the binary yourself:
