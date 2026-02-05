@@ -1,5 +1,5 @@
 {
-  description = "Code SVG - A Go server to generate code snippets as SVG images";
+  description = "code2svg - A Go server to generate code snippets as SVG images";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -21,8 +21,8 @@
         buildGoModule = pkgs.buildGoModule.override { inherit go; };
       in
       {
-        packages.code-svg = buildGoModule {
-          pname = "code-svg";
+        packages.code2svg = buildGoModule {
+          pname = "code2svg";
           version = "0.1.0";
           src = ./.;
 
@@ -31,21 +31,21 @@
           nativeBuildInputs = [ pkgs.makeWrapper ];
 
           postInstall = ''
-            mkdir -p $out/share/code-svg
-            cp code_preview.svg $out/share/code-svg/
+            mkdir -p $out/share/code2svg
+            cp code_preview.svg $out/share/code2svg/
 
-            wrapProgram $out/bin/code-svg \
-              --run "cd $out/share/code-svg"
+            wrapProgram $out/bin/code2svg \
+              --run "cd $out/share/code2svg"
           '';
         };
 
-        packages.default = self.packages.${system}.code-svg;
+        packages.default = self.packages.${system}.code2svg;
 
-        apps.code-svg = utils.lib.mkApp {
-          drv = self.packages.${system}.code-svg;
+        apps.code2svg = utils.lib.mkApp {
+          drv = self.packages.${system}.code2svg;
         };
 
-        apps.default = self.apps.${system}.code-svg;
+        apps.default = self.apps.${system}.code2svg;
 
         devShells.default = pkgs.mkShell {
           buildInputs = [
@@ -59,7 +59,7 @@
       }
     )
     // {
-      nixosModules.code-svg =
+      nixosModules.code2svg =
         {
           config,
           lib,
@@ -68,9 +68,9 @@
         }:
         {
           imports = [ ./nixos/module.nix ];
-          services.code-svg.package = lib.mkDefault self.packages.${pkgs.system}.code-svg;
+          services.code2svg.package = lib.mkDefault self.packages.${pkgs.system}.code2svg;
         };
 
-      nixosModules.default = self.nixosModules.code-svg;
+      nixosModules.default = self.nixosModules.code2svg;
     };
 }

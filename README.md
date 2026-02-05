@@ -1,10 +1,10 @@
-# CodeSvg
+# code2svg
 
 ![img](code_preview.svg)
 
 ## Introduction
 
-CodeSvg is a simple Go-based microservice that transforms source code into beautiful, syntax-highlighted SVG images. 
+code2svg is a simple Go-based microservice that transforms source code into beautiful, syntax-highlighted SVG images. 
 Inspired by the aesthetics of modern code editors like NvChad, it features:
 
 ### Setup
@@ -13,10 +13,10 @@ To run the server locally, you only need to have Go installed.
 
 ```bash
 # Clone the repository
-git clone https://github.com/micartey/code-svg.git
+git clone https://github.com/micartey/code2svg.git
 
 # Navigate into the directory
-cd code-svg
+cd code2svg
 
 # Run the server using just
 just run
@@ -27,22 +27,22 @@ just run
 If you are using Nix, you can run the server directly:
 
 ```bash
-nix run github:micartey/code-svg
+nix run github:micartey/code2svg
 ```
 
 To host it on a NixOS server, add the flake to your inputs and import the module:
 
 ```nix
 {
-  inputs.code-svg.url = "github:micartey/code-svg";
+  inputs.code2svg.url = "github:micartey/code2svg";
 
-  outputs = { self, nixpkgs, code-svg }: {
+  outputs = { self, nixpkgs, code2svg }: {
     nixosConfigurations.my-server = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        code-svg.nixosModules.default
+        code2svg.nixosModules.default
         {
-          services.code-svg = {
+          services.code2svg = {
             enable = true;
             port = 8080;
             openFirewall = true;

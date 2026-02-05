@@ -1,26 +1,25 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 
 let
-  cfg = config.services.code-svg;
+  cfg = config.services.code2svg;
 in
 {
-  options.services.code-svg = {
-    enable = lib.mkEnableOption "code-svg server";
+  options.services.code2svg = {
+    enable = lib.mkEnableOption "code2svg server";
 
     package = lib.mkOption {
       type = lib.types.package;
-      description = "The code-svg package to use.";
+      description = "The code2svg package to use.";
     };
 
     port = lib.mkOption {
       type = lib.types.port;
       default = 8080;
-      description = "The port on which the code-svg server listens.";
+      description = "The port on which the code2svg server listens.";
     };
 
     openFirewall = lib.mkOption {
@@ -31,7 +30,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    systemd.services.code-svg = {
+    systemd.services.code2svg = {
       description = "Code SVG Server";
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
@@ -41,7 +40,7 @@ in
       };
 
       serviceConfig = {
-        ExecStart = "${cfg.package}/bin/code-svg";
+        ExecStart = "${cfg.package}/bin/code2svg";
         Restart = "always";
         DynamicUser = true;
         # Basic hardening

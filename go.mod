@@ -1,3 +1,3 @@
-module micartey.dev/code-svg
+module micartey.dev/code2svg
 
 go 1.24.12
