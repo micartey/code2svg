@@ -1,0 +1,5 @@
+pre-commit:
+  commands:
+    build:
+      run: nix build
+      files: git ls-files
