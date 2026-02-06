@@ -51,11 +51,11 @@
             <text x="20" y="20" class="base">
                 <tspan fill="none"></tspan>
                 <tspan class="keyword">let</tspan>
-                <tspan class="variable">message</tspan> = <tspan class="string">"Hello, NvChad!"</tspan>;
+                <tspan class="variable">message</tspan> = <tspan class="string">"Hello, World!"</tspan>;
             </text>
             <text x="20" y="40" class="base">
                 <tspan fill="none"></tspan>
-                <tspan class="comment">// This line is selected in visual mode</tspan>
+                <tspan class="comment">// This is a comment </tspan>
             </text>
             <text x="20" y="60" class="base">
                 <tspan fill="none"></tspan>
