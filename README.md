@@ -9,6 +9,18 @@ These svg images use normal text and thus can be copied!
 However, GitHub e.g. does not support the direct import of svgs and therefore this feature is not working in Readme files... 
 They can only be included as normal images.
 
+### Example
+
+The following link will return an svg with a simple hello world example:
+
+```
+https://code.micartey.dev/svg?code=ZnVuYyBoZWxsbygpIHsKICAgIGZtdC5QcmVudGxuKCJIZWxsbyIpCn0=
+```
+
+Taking this link in wrapping it inside a markdown image tag will result in the following image:
+
+![img](https://code.micartey.dev/svg?code=ZnVuYyBoZWxsbygpIHsKICAgIGZtdC5QcmVudGxuKCJIZWxsbyIpCn0=)
+
 ### Setup
 
 To run the server locally, you only need to have Go installed.
