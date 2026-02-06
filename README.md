@@ -1,6 +1,6 @@
 # code2svg
 
-![img](code_preview.svg)
+![img](./pkg/code2svg/code_preview.svg)
 
 ## Introduction
 
@@ -54,7 +54,7 @@ To host it on a NixOS server, add the flake to your inputs and import the module
 }
 ```
 
-### Build from source
+#### Build from source
 
 If you prefer to build the binary yourself:
 
