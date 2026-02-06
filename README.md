@@ -5,7 +5,9 @@
 ## Introduction
 
 code2svg is a simple Go-based microservice that transforms source code into beautiful, syntax-highlighted SVG images. 
-Inspired by the aesthetics of modern code editors like NvChad, it features:
+These svg images use normal text and thus can be copied!
+However, GitHub e.g. does not support the direct import of svgs and therefore this feature is not working in Readme files... 
+They can only be included as normal images.
 
 ### Setup
 
