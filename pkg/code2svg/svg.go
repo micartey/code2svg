@@ -18,7 +18,7 @@ func GenerateSVG(code string) (string, error) {
 		lineCount = 1
 	}
 
-	totalHeight := 60 + 20*lineCount
+	totalHeight := 80 + 20*lineCount
 
 	const charWidth = 8.5
 	maxWidth := 800.0
@@ -63,6 +63,8 @@ func GenerateSVG(code string) (string, error) {
 		endIdx := strings.Index(svgStr[contentStart:], "</g>")
 		if endIdx != -1 {
 			endIdx += contentStart
+			// Actually placing the code inside the template and removing the current builer plate code
+			// This is done by splitting it into a start and ending sequence
 			svgStr = svgStr[:contentStart] + "\n" + codeContent.String() + "        " + svgStr[endIdx:]
 		}
 	}
