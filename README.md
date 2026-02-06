@@ -14,17 +14,17 @@ They can only be included as normal images.
 To run the server locally, you only need to have Go installed.
 
 ```bash
-# Clone the repository
-git clone https://github.com/micartey/code2svg.git
-
-# Navigate into the directory
-cd code2svg
-
 # Run the server using just
 just run
+
+# Or build from source
+go build -o server .
+./server
 ```
 
-#### Nix & NixOS
+The port is `8080` unless an environment variable is provided.
+
+#### Nix/NixOS
 
 If you are using Nix, you can run the server directly:
 
@@ -55,17 +55,6 @@ To host it on a NixOS server, add the flake to your inputs and import the module
   };
 }
 ```
-
-#### Build from source
-
-If you prefer to build the binary yourself:
-
-```bash
-go build -o server .
-./server
-```
-
-The server will start on `:8080` by default.
 
 ## Usage
 
