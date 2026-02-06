@@ -2,7 +2,7 @@
 
 ![img](./pkg/code2svg/code_preview.svg)
 
-## Introduction
+## 📚 Introduction
 
 code2svg is a simple Go-based microservice that transforms source code into beautiful, syntax-highlighted SVG images. 
 These svg images use normal text and thus can be copied!
@@ -68,7 +68,7 @@ To host it on a NixOS server, add the flake to your inputs and import the module
 }
 ```
 
-## Usage
+## 🚀 Usage
 
 The primary endpoint is `/svg`. You can provide the code either as a query parameter or in the request body.
 
