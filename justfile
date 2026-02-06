@@ -3,4 +3,4 @@ default:
 
 # Run the server
 run:
-    go run .
+    go run ./cmd/code2svg

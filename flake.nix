@@ -28,15 +28,7 @@
 
           vendorHash = null;
 
-          nativeBuildInputs = [ pkgs.makeWrapper ];
-
-          postInstall = ''
-            mkdir -p $out/share/code2svg
-            cp code_preview.svg $out/share/code2svg/
-
-            wrapProgram $out/bin/code2svg \
-              --run "cd $out/share/code2svg"
-          '';
+          subPackages = [ "cmd/code2svg" ];
         };
 
         packages.default = self.packages.${system}.code2svg;

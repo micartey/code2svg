@@ -1,0 +1,73 @@
+<svg width="800" height="220" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap');
+
+            .ui-text { fill: #abb2bf; font-family: 'Inter', sans-serif; font-size: 13px; }
+            .sl-mode-text { fill: #1e222a; font-weight: bold; font-family: 'Inter', sans-serif; font-size: 12px; }
+            .sl-branch-text { fill: #3269a8; font-weight: bold; font-family: 'Inter', sans-serif; font-size: 12px; }
+            .base { fill: #abb2bf; font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+
+            .bg { fill: #1e222a; }
+            .statusline-bg { fill: #242b38; }
+            .tabline-bg { fill: #181b21; }
+            .selection { fill: #3e4452; }
+            .line-nr { fill: #4b5263; text-anchor: end; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+
+            /* Syntax Colors */
+            .keyword { fill: #c678dd; font-weight: bold; }
+            .function { fill: #61afef; }
+            .string { fill: #98c379; }
+            .comment { fill: #5c6370; font-style: italic; }
+            .variable { fill: #e06c75; }
+            .type { fill: #d19a66; }
+
+            .tab-active { fill: #1e222a; }
+            .tab-active-text { fill: #61afef; font-weight: bold; }
+        </style>
+    </defs>
+
+    <!-- Main Background with rounded corners -->
+    <!-- Height = 80 + 20 * LINE_COUNT -->
+    <rect width="800" height="200" rx="8" class="bg"/>
+
+    <!-- Window Controls (Mac Style) -->
+    <g transform="translate(20, 20)">
+        <circle cx="0" cy="0" r="6" fill="#e06c75"/>
+        <circle cx="16" cy="0" r="6" fill="#d19a66"/>
+        <circle cx="32" cy="0" r="6" fill="#98c379"/>
+    </g>
+
+    <!-- Main Editor Area -->
+    <g transform="translate(0, 35)">
+
+        <!-- Code Content -->
+        <g transform="translate(20, 40)">
+            <text y="0" class="base">
+                <tspan class="keyword">fn</tspan>
+                <tspan class="function">main</tspan>(<tspan class="type">String</tspan>[]
+                <tspan class="base">args</tspan>) {
+            </text>
+            <text x="20" y="20" class="base">
+                <tspan fill="none"></tspan>
+                <tspan class="keyword">let</tspan>
+                <tspan class="variable">message</tspan> = <tspan class="string">"Hello, NvChad!"</tspan>;
+            </text>
+            <text x="20" y="40" class="base">
+                <tspan fill="none"></tspan>
+                <tspan class="comment">// This line is selected in visual mode</tspan>
+            </text>
+            <text x="20" y="60" class="base">
+                <tspan fill="none"></tspan>
+                <tspan class="function">println!</tspan>(<tspan class="string">"{}"</tspan>, <tspan class="variable">
+                message</tspan>);
+            </text>
+            <text x="20" y="80" class="base">
+                <tspan fill="none"></tspan>
+                <tspan class="keyword">return</tspan>
+                <tspan class="type">Ok</tspan>(());
+            </text>
+            <text y="100" class="base">}</text>
+        </g>
+    </g>
+</svg>
