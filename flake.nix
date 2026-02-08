@@ -16,8 +16,8 @@
       system:
       let
         pkgs = import nixpkgs { inherit system; };
-        # Use Go 1.24 as requested
-        go = pkgs.go_1_24;
+        # Use Go 1.25 as requested
+        go = pkgs.go_1_25;
         buildGoModule = pkgs.buildGoModule.override { inherit go; };
       in
       {
@@ -29,6 +29,18 @@
           vendorHash = null;
 
           subPackages = [ "cmd/code2svg" ];
+
+          nativeBuildInputs = [ pkgs.makeWrapper ];
+
+          postInstall = ''
+            wrapProgram $out/bin/code2svg \
+              --prefix PATH : ${
+                pkgs.lib.makeBinPath [
+                  pkgs.resvg
+                  pkgs.librsvg
+                ]
+              }
+          '';
         };
 
         packages.default = self.packages.${system}.code2svg;
@@ -46,6 +58,7 @@
             pkgs.gopls
             pkgs.go-tools
             pkgs.nixfmt-rfc-style
+            pkgs.resvg
           ];
         };
       }

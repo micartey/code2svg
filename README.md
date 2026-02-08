@@ -70,13 +70,18 @@ To host it on a NixOS server, add the flake to your inputs and import the module
 
 ## 🚀 Usage
 
-The primary endpoint is `/svg`. You can provide the code either as a query parameter or in the request body.
+The primary endpoints are `/svg` and `/png`. You can provide the code either as a query parameter or in the request body.
+
+- `/svg`: Returns an SVG image (`image/svg+xml`).
+- `/png`: Returns a PNG image (`image/png`). This is converted on-the-fly from the SVG using `rsvg-convert`.
 
 ### Query Parameters
 
-| Parameter | Type   | Description                                      |
-|-----------|--------|--------------------------------------------------|
-| `code`    | string | Base64 encoded source code to be rendered. |
+| Parameter     | Type    | Description                                      |
+|---------------|---------|--------------------------------------------------|
+| `code`        | string  | Base64 encoded source code to be rendered.       |
+| `transparent` | boolean | Set to `true` to remove the background color.   |
+
 
 ```bash
 curl "http://localhost:8080/svg?code=Zm4gbWFpbigpIHsKICAgIHByaW50bG4hKCJIZWxsbyIpOwp9"

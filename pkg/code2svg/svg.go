@@ -10,7 +10,7 @@ import (
 //go:embed code_preview.svg
 var svgTemplate string
 
-func GenerateSVG(code string) (string, error) {
+func GenerateSVG(code string, transparent bool) (string, error) {
 	code = strings.ReplaceAll(code, "\r\n", "\n")
 	lines := strings.Split(code, "\n")
 	lineCount := len(lines)
@@ -40,7 +40,11 @@ func GenerateSVG(code string) (string, error) {
 	svgStr = reSvgOpen.ReplaceAllString(svgStr, fmt.Sprintf(`<svg width="%d" height="%d" viewBox="0 0 %d %d"`, totalWidth, totalHeight, totalWidth, totalHeight))
 
 	reBgRect := regexp.MustCompile(`<rect width="\d+" height="\d+" rx="8" class="bg"/>`)
-	svgStr = reBgRect.ReplaceAllString(svgStr, fmt.Sprintf(`<rect width="%d" height="%d" rx="8" class="bg"/>`, totalWidth, totalHeight))
+	if transparent {
+		svgStr = reBgRect.ReplaceAllString(svgStr, "")
+	} else {
+		svgStr = reBgRect.ReplaceAllString(svgStr, fmt.Sprintf(`<rect width="%d" height="%d" rx="8" class="bg"/>`, totalWidth, totalHeight))
+	}
 
 	var codeContent strings.Builder
 	for i, line := range lines {

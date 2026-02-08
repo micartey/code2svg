@@ -15,6 +15,7 @@ func main() {
 	}
 
 	http.HandleFunc("/svg", server.HandleSVG)
+	http.HandleFunc("/png", server.HandlePNG)
 	fmt.Printf("Server starting on :%s...\n", port)
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		fmt.Printf("Error starting server: %v\n", err)
