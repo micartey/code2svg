@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	patternComment  = `//.*`
+	patternComment  = `(//|#).*`
 	patternString   = `".*?"`
 	patternKeyword  = `\b(fn|let|return|if|else|while|for|match|type|struct|enum|impl|use|mod|pub|crate|async|await|static|mut|const|ref|move|where|dyn|trait|package|import|func|var|range|chan|go|select|defer|interface|map|switch|case|default|break|continue|fallthrough)\b`
 	patternFunction = `\b(\w+!?)[\s]*[\(!]`

@@ -10,7 +10,7 @@ func CalculateIndent(line string) (int, string) {
 	prefix := line[:len(line)-len(trimmed)]
 	tabs := strings.Count(prefix, "\t")
 	spaces := strings.Count(prefix, " ")
-	indent := tabs + (spaces / 4)
+	indent := tabs*4 + spaces
 	return indent, trimmed
 }
 

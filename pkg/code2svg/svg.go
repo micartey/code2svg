@@ -24,7 +24,7 @@ func GenerateSVG(code string, transparent bool) (string, error) {
 	maxWidth := 800.0
 	for _, line := range lines {
 		indent, content := CalculateIndent(line)
-		lineWidth := 40.0 + float64(indent*20) + (float64(len(content)) * charWidth)
+		lineWidth := 40.0 + float64(indent*5) + (float64(len(content)) * charWidth)
 		if lineWidth > maxWidth {
 			maxWidth = lineWidth
 		}
@@ -49,7 +49,7 @@ func GenerateSVG(code string, transparent bool) (string, error) {
 	var codeContent strings.Builder
 	for i, line := range lines {
 		indent, content := CalculateIndent(line)
-		x := indent * 20
+		x := indent * 5
 		y := i * 20
 		highlighted := HighlightCode(content)
 
