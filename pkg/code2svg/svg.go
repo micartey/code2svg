@@ -23,8 +23,8 @@ func GenerateSVG(code string, transparent bool) (string, error) {
 	const charWidth = 8.5
 	maxWidth := 800.0
 	for _, line := range lines {
-		indent, content := CalculateIndent(line)
-		lineWidth := 40.0 + float64(indent*5) + (float64(len(content)) * charWidth)
+		displayLine := strings.ReplaceAll(line, "\t", "    ")
+		lineWidth := 40.0 + (float64(len(displayLine)) * charWidth)
 		if lineWidth > maxWidth {
 			maxWidth = lineWidth
 		}
@@ -47,18 +47,14 @@ func GenerateSVG(code string, transparent bool) (string, error) {
 	}
 
 	var codeContent strings.Builder
+	codeContent.WriteString("            <text class=\"base\" xml:space=\"preserve\">\n")
 	for i, line := range lines {
-		indent, content := CalculateIndent(line)
-		x := indent * 5
 		y := i * 20
-		highlighted := HighlightCode(content)
-
-		if x == 0 {
-			codeContent.WriteString(fmt.Sprintf(`            <text y="%d" class="base">%s</text>`+"\n", y, highlighted))
-		} else {
-			codeContent.WriteString(fmt.Sprintf(`            <text x="%d" y="%d" class="base">%s</text>`+"\n", x, y, highlighted))
-		}
+		displayLine := strings.ReplaceAll(line, "\t", "    ")
+		highlighted := HighlightCode(displayLine)
+		codeContent.WriteString(fmt.Sprintf(`                <tspan x="0" y="%d">%s</tspan>`+"\n", y, highlighted))
 	}
+	codeContent.WriteString("            </text>")
 
 	groupStartTag := `<g transform="translate(20, 40)">`
 	startIdx := strings.Index(svgStr, groupStartTag)

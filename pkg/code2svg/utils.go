@@ -5,15 +5,6 @@ import (
 	"strings"
 )
 
-func CalculateIndent(line string) (int, string) {
-	trimmed := strings.TrimLeft(line, "\t ")
-	prefix := line[:len(line)-len(trimmed)]
-	tabs := strings.Count(prefix, "\t")
-	spaces := strings.Count(prefix, " ")
-	indent := tabs*4 + spaces
-	return indent, trimmed
-}
-
 func DecodeBase64(input string) ([]byte, error) {
 	input = strings.TrimSpace(input)
 	input = strings.ReplaceAll(input, " ", "+")
